@@ -1,16 +1,22 @@
 <!DOCTYPE html>
+<html>
+
 <head>
-    <link rel="alternate" href="android-app://com.gi.crm.gomobile/https/gedysintraware.github.io/redirect" />
-    <link rel="alternate" href="android-app://com.gi.crm.gomobile/https/gomobile.gedys-intraware.de/redirect" />
-    <meta charset="UTF-8">
-    <title>goMobile Pro</title>
+	<link rel="alternate" href="android-app://com.gi.crm.gomobile/https/gedysintraware.github.io/redirect" />
+	<link rel="alternate" href="android-app://com.gi.crm.gomobile/https/gomobile.gedys-intraware.de/redirect" />
+	<meta charset="UTF-8">
+	<title>goMobile Pro</title>
 
 	<link rel="stylesheet" type="text/css" href="redirect.css">
+
+	<script src="./script/url.js"></script>
+	<script src="./script/urlsearchparams.js"></script>
+	<script src="./script/startswith.js"></script>
 </head>
 
 <body>
 	<header>
-		
+
 		<div class="mainSinglePageHeaderContent">
 			<a class="clear" href="https://www.gedys-intraware.de/produkterweiterung/go-mobile-pro-app/">
 				<div class="startBtnMW">
@@ -20,19 +26,21 @@
 			</a>
 		</div>
 	</header>
-    <div class="wait" style="display: none">
-        <p>Redirecting...</p>
-    </div>
+	<div class="wait" style="display: none">
+		<p>Redirecting...</p>
+	</div>
 
-    <div class="getAppInfo">
+	<div class="getAppInfo">
 		<div class="product">
 			<h1>CRM goMobile Pro</h1>
 			<div class="space"></div>
 			<img class="productLogo" src='img/goMobilePro_logo.png' />
 		</div>
 		<div class="hint">
-			<h1 class="en">Please download our app<br>to open this link</h1>
-			<h1 class="de">Bitten laden Sie unsere App herunter<br>um diesen Link zu öffnen</h1>
+			<h1 class="en">Please download our app
+				<br>to open this link</h1>
+			<h1 class="de">Bitten laden Sie unsere App herunter
+				<br>um diesen Link zu öffnen</h1>
 		</div>
 		<div class="buttons">
 			<a href="https://itunes.apple.com/de/app/crm-gomobile-pro/id1017772659?mt=8">
@@ -40,61 +48,71 @@
 			</a>
 			<br>
 			<a href='https://play.google.com/store/apps/details?id=com.gi.crm.gomobile&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
-				<img class='play store' alt='Get it on Google Play' src='img/en_badge_web_generic.png'/>
+				<img class='play store' alt='Get it on Google Play' src='img/en_badge_web_generic.png' />
 			</a>
 		</div>
 		<div class="legal">
-			<p class="app-legal">Apple, the Apple logo, iPhone, and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc.</p>
+			<p class="app-legal">Apple, the Apple logo, iPhone, and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions.
+				App Store is a service mark of Apple Inc.</p>
 			<p class="play-legal">Google Play and the Google Play logo are trademarks of Google LLC.</p>
 		</div>
-    </div>
-</body>
+	</div>
 
-<script>
-	var lang = navigator.language;
-    var waitDiv = document.querySelector(".wait");
-    var infoDiv = document.querySelector(".getAppInfo");
-    var hintDiv = document.querySelector(".hint");
-    var url = new URL(window.location);
-	if(url.searchParams != null && url.search != "") {
-		var redirectURl = url.searchParams.get("url");
-		if(redirectURl !== null && redirectURl !== "") {
-			waitDiv.style.display = "block";
-			infoDiv.style.display = "none";
-			window.location = decodeURIComponent(redirectURl) + url.search;
+	<script>
+		var lang = navigator.language;
+		var waitDiv = document.querySelector(".wait");
+		var infoDiv = document.querySelector(".getAppInfo");
+		var hintDiv = document.querySelector(".hint");
+		var url = new URL(window.location);
+		if (url.search != "") {
+			var params = new URLSearchParams(url.search);
+			var redirect = params.get("url");
+			params.delete("url");
+			if (redirect !== null && redirect !== "") {
+				waitDiv.style.display = "block";
+				infoDiv.style.display = "none";
+
+				var seperator = "?";
+				if (redirect.lastIndexOf("?") > 0) {
+					seperator = "&";
+				}
+				window.location.replace(redirect + seperator + params.toString());
+			} else {
+				infoDiv.style.display = "block";
+				waitDiv.style.display = "none";
+			}
 		} else {
 			infoDiv.style.display = "block";
 			waitDiv.style.display = "none";
+			hintDiv.style.display = "none";
 		}
-	} else {
-		infoDiv.style.display = "block";
-		waitDiv.style.display = "none";
-        hintDiv.style.display = "none";
-	}
-	
-	if(lang.startsWith('de')) {
-		var elems = document.querySelectorAll('.de');
-		for(i = 0; i < elems.length; i++)
-			elems[i].style.display = 'block';
-	} else {
-		var elems = document.querySelectorAll('.en');
-		for(i = 0; i < elems.length; i++)
-			elems[i].style.display = 'block';
-	}
-	
-	var pltfrm = navigator.platform;
-	if(/iphone/i.test(pltfrm) || /ipad/i.test(pltfrm)) {
-		document.querySelector(".play").parentElement.style.display = 'none';
-        document.querySelector(".play-legal").style.display = 'none';
-	} else if(/linux/i.test(pltfrm)) {
-		document.querySelector(".app").parentElement.style.display = 'none';
-        document.querySelector(".app-legal").style.display = 'none';
-	}
-		
-	window.setTimeout(function () {
-		var elemPlay = document.querySelector(".play");
-		var elemApp = document.querySelector(".app");
-		elemApp.style.height = elemApp.offsetHeigth - (elemPlay.offsetHeight * 82 / 250 ) + "px";
-		elemApp.style.width = elemApp.offsetWidth - (elemPlay.offsetWidth * 82 / 646 ) + "px";
-	}, 5);
-</script>
+
+		if (lang.startsWith('de')) {
+			var elems = document.querySelectorAll('.de');
+			for (i = 0; i < elems.length; i++)
+				elems[i].style.display = 'block';
+		} else {
+			var elems = document.querySelectorAll('.en');
+			for (i = 0; i < elems.length; i++)
+				elems[i].style.display = 'block';
+		}
+
+		var pltfrm = navigator.platform;
+		if (/iphone/i.test(pltfrm) || /ipad/i.test(pltfrm)) {
+			document.querySelector(".play").parentElement.style.display = 'none';
+			document.querySelector(".play-legal").style.display = 'none';
+		} else if (/linux/i.test(pltfrm)) {
+			document.querySelector(".app").parentElement.style.display = 'none';
+			document.querySelector(".app-legal").style.display = 'none';
+		}
+
+		window.setTimeout(function () {
+			var elemPlay = document.querySelector(".play");
+			var elemApp = document.querySelector(".app");
+			elemApp.style.height = elemApp.offsetHeigth - (elemPlay.offsetHeight * 82 / 250) + "px";
+			elemApp.style.width = elemApp.offsetWidth - (elemPlay.offsetWidth * 82 / 646) + "px";
+		}, 5);
+	</script>
+</body>
+
+</html>
