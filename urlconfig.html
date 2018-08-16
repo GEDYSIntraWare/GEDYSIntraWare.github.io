@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="goMobile Pro">
+        <title>goMobile Pro</title>
+
+        <!-- Polyfills -->
+        <script src="./script/url.js"></script>
+        <script src="./script/urlsearchparams.js"></script>
+        <script src="./script/startswith.js"></script>
+    </head>
+
+    <body>
+        <p>Enter url to mobile online: <input type="text" id="url"> <button onclick="generate()">Generate</button></p>
+
+        <p>Redirect url: <input type="text" id="redirect"> <button onclick="copy('redirect')">Copy</button></p>
+
+        <p>Config url: <input type="text" id="config"> <button onclick="copy('config')">Copy</button></p>
+
+
+        <script>
+            const HOST = "https://gomobile.gedys-intraware.de";
+
+            function generate() {
+                var urlField = document.getElementById("url");
+                var redirectField = document.getElementById("redirect");
+                var configField = document.getElementById("config");
+
+                redirectField.value = HOST + "/redirect?url=" + encodeURIComponent(urlField.value);
+
+                var mobielURI = new URL(urlField.value);
+                configField.value = HOST + "/config?"
+                    + "&https=" + (mobielURI.protocol === "https" ? true : false)
+                    + "&server=" + encodeURIComponent(mobielURI.hostname)
+                    + (mobielURI.port !== "" ? ":" + encodeURIComponent(mobielURI.port) : "")
+                    + "&path=" + encodeURIComponent(mobielURI.pathname);
+            }
+
+            function copy(fieldId) {
+                var copyText = document.getElementById(fieldId);
+                copyText.select();
+                document.execCommand("copy");
+            }
+        </script>
+    </body>
+</html>
