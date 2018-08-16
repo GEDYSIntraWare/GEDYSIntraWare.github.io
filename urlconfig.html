@@ -30,7 +30,7 @@
                 redirectField.value = HOST + "/redirect?url=" + encodeURIComponent(urlField.value);
 
                 var mobielURI = new URL(urlField.value);
-                configField.value = HOST + "/config?"
+                configField.value = HOST + "/setup?"
                     + "&https=" + (mobielURI.protocol === "https" ? true : false)
                     + "&server=" + encodeURIComponent(mobielURI.hostname)
                     + (mobielURI.port !== "" ? ":" + encodeURIComponent(mobielURI.port) : "")
