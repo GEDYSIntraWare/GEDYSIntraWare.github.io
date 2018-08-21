@@ -7,7 +7,19 @@
     <meta charset="UTF-8">
     <meta name="description" content="goMobile Pro">
     <title>goMobile Pro</title>
+    <link rel="manifest" href="/manifest.json">
+
+    <script src="./script/url.js"></script>
+    <script src="./script/urlsearchparams.js"></script>
 </head>
 <script>
-    window.location.replace("/redirect.html");
+    var url = new URL(window.location);
+    var suffix = ""
+    if (url.search != "") {
+        suffix = new URLSearchParams(url.search);
+        if(suffix.get("goToSetup") !== "true") {
+            suffix.set("goToSetup", "true");
+        }
+    }
+    window.location.replace("/redirect.html?" + suffix);
 </script>

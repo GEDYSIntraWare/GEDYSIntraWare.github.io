@@ -98,3 +98,19 @@ header {
 .space {
 	width: 0.5em;
 }
+button { 
+        background-color: white; 
+        border: 1px solid #457DB7; 
+        border-radius: .75em; 
+        color: #457DB7; 
+        padding: .75em 1em; 
+} 
+button:hover { 
+        background-color: #457DB7; 
+        color: white; 
+} 
+button:active { 
+        background-color: #ffa242; 
+        border-color: #457DB7; 
+        color: white; 
+} 

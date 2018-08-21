@@ -4,11 +4,15 @@
 <head>
 	<link rel="alternate" href="android-app://com.gi.crm.gomobile/https/gedysintraware.github.io/redirect" />
 	<link rel="alternate" href="android-app://com.gi.crm.gomobile/https/gomobile.gedys-intraware.de/redirect" />
+	<meta name="apple-itunes-app" content="app-id=1017772659, affiliate-data=redirect">
 	<meta charset="UTF-8">
 	<meta name="description" content="goMobile Pro">
+	<link rel="manifest" href="/manifest.json">
 	<title>goMobile Pro</title>
 
-	<link rel="stylesheet" type="text/css" href="redirect.css">
+	<link rel="stylesheet" type="text/css" href="style/main.css">
+	<script src="./script/redirect.js"></script>
+	<script src="./script/ui.js"></script>
 
 	<!-- Polyfills -->
 	<script src="./script/url.js"></script>
@@ -17,8 +21,8 @@
 </head>
 
 <body>
+	<!-- Header -->
 	<header>
-
 		<div class="mainSinglePageHeaderContent">
 			<a class="clear" href="https://www.gedys-intraware.de/produkterweiterung/go-mobile-pro-app/">
 				<div class="startBtnMW">
@@ -28,6 +32,8 @@
 			</a>
 		</div>
 	</header>
+
+	<!-- Redirect message -->
 	<div class="wait" style="display: none">
 		<p>Redirecting...</p>
 	</div>
@@ -43,6 +49,13 @@
 				<br>to open this link</h1>
 			<h1 class="de">Bitten laden Sie unsere App herunter
 				<br>um diesen Link zu öffnen</h1>
+			<br>
+			<p class="en"> Click this button after downloading to follow the link.</p>
+			<p class="de"> Klicken Sie diesen Button nach dem Installieren, um dem Link zu folgen.</p>
+			<button type=button onClick="reload()" value='Open App'>
+				<b class="en">Open in app</b>
+				<b class="de">In App öffnen</b>
+			</button>
 		</div>
 		<div class="buttons">
 			<a href="https://itunes.apple.com/de/app/crm-gomobile-pro/id1017772659?mt=8">
@@ -53,76 +66,23 @@
 				<img class='play store' alt='Get it on Google Play' src='img/en_badge_web_generic.png' />
 			</a>
 		</div>
-		<div class="legal">
-			<p class="app-legal">Apple, the Apple logo, iPhone, and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions.
-				App Store is a service mark of Apple Inc.</p>
-			<p class="play-legal">Google Play and the Google Play logo are trademarks of Google LLC.</p>
-			<p class="de">
-				<a href="https://www.gedys-intraware.de/datenschutz/">Datenschutz</a>
-				<a href="https://www.gedys-intraware.de/impressum/">Impressum</a>
-			</p>
-			<p class="en">
-				<a href="https://www.gedys-intraware.com/privacy/">Data Protection</a>
-				<a href="https://www.gedys-intraware.com/imprint/">Imprint</a>
-			</p>
-		</div>
+
+		<!-- Footer -->
+		<footer>
+			<div class="legal">
+				<p class="app-legal">Apple, the Apple logo, iPhone, and iPad are trademarks of Apple Inc., registered in the U.S. and
+					other countries and regions. App Store is a service mark of Apple Inc.</p>
+				<p class="play-legal">Google Play and the Google Play logo are trademarks of Google LLC.</p>
+				<p class="de">
+					<a href="https://www.gedys-intraware.de/datenschutz/">Datenschutz</a>
+					<a href="https://www.gedys-intraware.de/impressum/">Impressum</a>
+				</p>
+				<p class="en">
+					<a href="https://www.gedys-intraware.com/privacy/">Data Protection</a>
+					<a href="https://www.gedys-intraware.com/imprint/">Imprint</a>
+				</p>
+			</div>
+		</footer>
 	</div>
-
-	<script>
-		var lang = navigator.language;
-		var waitDiv = document.querySelector(".wait");
-		var infoDiv = document.querySelector(".getAppInfo");
-		var hintDiv = document.querySelector(".hint");
-		var url = new URL(window.location);
-		if (url.search != "") {
-			var params = new URLSearchParams(url.search);
-			var redirect = params.get("url");
-			params.delete("url");
-			if (redirect !== null && redirect !== "") {
-				waitDiv.style.display = "block";
-				infoDiv.style.display = "none";
-
-				var seperator = "?";
-				if (redirect.lastIndexOf("?") > 0) {
-					seperator = "&";
-				}
-				window.location.replace(redirect + seperator + params.toString());
-			} else {
-				infoDiv.style.display = "block";
-				waitDiv.style.display = "none";
-			}
-		} else {
-			infoDiv.style.display = "block";
-			waitDiv.style.display = "none";
-			hintDiv.style.display = "none";
-		}
-
-		if (lang.startsWith('de')) {
-			var elems = document.querySelectorAll('.de');
-			for (i = 0; i < elems.length; i++)
-				elems[i].style.display = 'block';
-		} else {
-			var elems = document.querySelectorAll('.en');
-			for (i = 0; i < elems.length; i++)
-				elems[i].style.display = 'block';
-		}
-
-		var pltfrm = navigator.platform;
-		if (/iphone/i.test(pltfrm) || /ipad/i.test(pltfrm)) {
-			document.querySelector(".play").parentElement.style.display = 'none';
-			document.querySelector(".play-legal").style.display = 'none';
-		} else if (/linux/i.test(pltfrm)) {
-			document.querySelector(".app").parentElement.style.display = 'none';
-			document.querySelector(".app-legal").style.display = 'none';
-		}
-
-		window.setTimeout(function () {
-			var elemPlay = document.querySelector(".play");
-			var elemApp = document.querySelector(".app");
-			elemApp.style.height = elemApp.offsetHeigth - (elemPlay.offsetHeight * 82 / 250) + "px";
-			elemApp.style.width = elemApp.offsetWidth - (elemPlay.offsetWidth * 82 / 646) + "px";
-		}, 5);
-	</script>
 </body>
-
 </html>
