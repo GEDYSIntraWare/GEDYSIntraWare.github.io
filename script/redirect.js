@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         var params = new URLSearchParams(url.search);
         var redirect = params.get("url");
         params.delete("url");
-        if (redirect !== null && redirect !== "") {
+        if (redirect !== null && redirect !== "" && params.get("goToSetup") != "true") {
             waitDiv.style.display = "block";
             infoDiv.style.display = "none";
 
