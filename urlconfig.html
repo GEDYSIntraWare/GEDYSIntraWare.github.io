@@ -12,11 +12,13 @@
     </head>
 
     <body>
-        <p>Enter URL to mobileonline.nsf: <input type="text" id="url"> <button onclick="generate()">Generate</button></p>
+        <p>Enter URL to mobileonline.nsf: <input type="text" id="url" size="60"> <button onclick="generate()">Generate</button></p>
+        
+        <p>(Optional) Enter username for config URL: <input type="text" id="username" size="60"></p>
 
-        <p>Redirect URL: <input type="text" id="redirect"> <button onclick="copy('redirect')">Copy</button></p>
+        <p>Redirect URL: <input type="text" id="redirect" size="60"> <button onclick="copy('redirect')">Copy</button></p>
 
-        <p>Config URL: <input type="text" id="config"> <button onclick="copy('config')">Copy</button></p>
+        <p>Config URL: <input type="text" id="config" size="60"> <button onclick="copy('config')">Copy</button></p>
 
 
         <script>
@@ -26,6 +28,7 @@
                 var urlField = document.getElementById("url");
                 var redirectField = document.getElementById("redirect");
                 var configField = document.getElementById("config");
+                var usernameField = document.getElementById("username");
 
                 redirectField.value = HOST + "/redirect?url=" + encodeURIComponent(urlField.value);
 
@@ -35,6 +38,10 @@
                     + "&server=" + encodeURIComponent(mobielURI.hostname)
                     + (mobielURI.port !== "" ? encodeURIComponent(":") + encodeURIComponent(mobielURI.port) : "")
                     + "&path=" + encodeURIComponent(mobielURI.pathname);
+                
+                if (usernameField.value !== "") {
+                    configField.value = configField.value + + "&username=" + encodeURIComponent(usernameField.value);
+                }
             }
 
             function copy(fieldId) {
