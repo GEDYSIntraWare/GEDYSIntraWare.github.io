@@ -20,6 +20,8 @@
 
         <p>Config URL: <input type="text" id="config" size="60"> <button onclick="copy('config')">Copy</button></p>
 
+        <p>URL Suffix: <input type="text" id="suffix" size="60"> <button onclick="copy('suffix')">Copy</button></p>
+
 
         <script>
             const HOST = "https://gomobile.gedys-intraware.de";
@@ -29,8 +31,10 @@
                 var redirectField = document.getElementById("redirect");
                 var configField = document.getElementById("config");
                 var usernameField = document.getElementById("username");
+                var suffixField = document.getElementById("suffix");
 
                 redirectField.value = HOST + "/redirect?url=" + encodeURIComponent(urlField.value);
+                suffixField.value = "?url=" + encodeURIComponent(urlField.value);
 
                 var mobielURI = new URL(urlField.value);
                 configField.value = HOST + "/setup?"
