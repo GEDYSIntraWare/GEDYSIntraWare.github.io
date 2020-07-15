@@ -38,7 +38,7 @@
 
                 var mobielURI = new URL(urlField.value);
                 configField.value = HOST + "/setup?"
-                    + "&https=" + (mobielURI.protocol === "https:" ? true : false)
+                    + "https=" + (mobielURI.protocol === "https:" ? true : false)
                     + "&server=" + encodeURIComponent(mobielURI.hostname)
                     + (mobielURI.port !== "" ? encodeURIComponent(":") + encodeURIComponent(mobielURI.port) : "")
                     + "&path=" + encodeURIComponent(mobielURI.pathname);
