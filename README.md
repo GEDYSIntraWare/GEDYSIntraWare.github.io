@@ -1,2 +1,2 @@
 # GEDYSIntraWare.github.io
-Source code und hosting for goMobile Pro Universal Links
+Source code und hosting for Gedys Mobile Universal Links

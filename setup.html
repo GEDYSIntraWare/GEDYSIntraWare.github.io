@@ -5,8 +5,8 @@
     <link rel="alternate" href="android-app://com.gi.crm.gomobile/https/gedysintraware.github.io/setup" />
     <link rel="alternate" href="android-app://com.gi.crm.gomobile/https/gomobile.gedys-intraware.de/setup" />
     <meta charset="UTF-8">
-    <meta name="description" content="goMobile Pro">
-    <title>goMobile Pro</title>
+    <meta name="description" content="Gedys Mobile">
+    <title>Gedys Mobile</title>
     <link rel="manifest" href="/manifest.json">
 
     <script src="./script/url.js"></script>
@@ -17,7 +17,7 @@
     var suffix = ""
     if (url.search != "") {
         suffix = new URLSearchParams(url.search);
-        if(suffix.get("goToSetup") !== "true") {
+        if (suffix.get("goToSetup") !== "true") {
             suffix.set("goToSetup", "true");
         }
     }
