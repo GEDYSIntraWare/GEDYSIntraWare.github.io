@@ -23,26 +23,16 @@ a {
 }
 
 header {
-	width: 100%;
 	background-color: white;
-	min-height: 4em;
 }
 
 .getAppInfo {
-	display: none;
 	text-align: center;
 	padding: 0 4em;
 }
 
 .product {
-	margin-top: 5em;
-}
-
-.product * {
-	display: inline-block;
-	vertical-align: middle;
-	font-weight: normal;
-	font-size: 36pt;
+	margin-top: 10em;
 }
 
 .hint {
@@ -54,26 +44,15 @@ header {
 }
 
 .buttons {
-	margin-top: 10em;
+	margin-top: 6em;
 }
 
 .legal {
-	margin-top: 15em;
+	margin-top: 12em;
 }
 
 .legal * {
 	font-size: 10pt;
-}
-
-.mainSinglePageHeaderContent {
-	color: #555;
-	display: block;
-	font-size: 2em;
-	margin: 0em auto;
-	padding: 0;
-	width: 100%;
-	float: left;
-	background-color: #fff;
 }
 
 .startBtnMW {
@@ -96,9 +75,10 @@ header {
 }
 
 .singlePageLogo {
-	height: 1em;
-	margin-top: 0.55em;
+	margin-top: 0.4em;
 	width: auto;
+	margin-left: 0.5em;
+	margin-bottom: 0.2em;
 }
 
 .productLogo {
